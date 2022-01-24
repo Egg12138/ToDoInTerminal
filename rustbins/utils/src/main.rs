@@ -1,6 +1,9 @@
 use clap::{Arg, App};
+use std::collections::HashMap; //HashMap is a subset of standard collections
 use std::env;
-use std::io::{Read, Write};
+use std::io::prelude::*;
+use std::io::{Read, Write, BufWriter};
+use std::fs::File;
 
 struct TestFile {
 	filepath: String,
@@ -12,9 +15,20 @@ pub struct FileFlow {
 	files: HashMap<String, TestFile>,
 } 
 
-fn main() 
-{
+pub fn write(path: &str, data: &str) -> std::io::Result<u32>{ // 返回状态码
 
+	Ok(0)
+
+}
+
+fn main() -> std::io::Result<()>
+{
+	let mut buffer = File::open("footester.txt")?;
+	let buffer_string: String;
+	debug_assert_eq!(buffer.read_to_string(&buffer_string), "asdsssssasdas");
+	//buffer.write_all(b"asdsssssasdas")?;
+	//buffer.flush()?;
+	Ok(())
 
 
     
