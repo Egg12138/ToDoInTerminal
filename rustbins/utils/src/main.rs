@@ -1,35 +1,14 @@
-use clap::{Arg, App};
-use std::collections::HashMap; //HashMap is a subset of standard collections
-use std::env;
-use std::io::prelude::*;
-use std::io::{Read, Write, BufWriter};
-use std::fs::File;
+use clap::{App, Arg};
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use utils::DemoFile;
 
-struct TestFile {
-	filepath: String,
-	pub data: String,
-	pub filesize: usize,
-}
-// TestFile不pub是因为实际上进行io流的是hashmap,多个文件集成好后再io，所以只有hashmap的结构要暴露。
-pub struct FileFlow {
-	files: HashMap<String, TestFile>,
-} 
+fn main() {
 
-pub fn write(path: &str, data: &str) -> std::io::Result<u32>{ // 返回状态码
+	//TODO 从命令行获取文件参数
+	let path = "asd".to_owned();
+	let contents = "written words".to_owned();
+	let testDemoFile: DemoFile = DemoFile::new(
+		&path.clone(), &contents.clone());
 
-	Ok(0)
-
-}
-
-fn main() -> std::io::Result<()>
-{
-	let mut buffer = File::open("footester.txt")?;
-	let buffer_string: String;
-	debug_assert_eq!(buffer.read_to_string(&buffer_string), "asdsssssasdas");
-	//buffer.write_all(b"asdsssssasdas")?;
-	//buffer.flush()?;
-	Ok(())
-
-
-    
-}
+	}
