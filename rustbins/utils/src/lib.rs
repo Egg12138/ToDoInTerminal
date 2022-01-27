@@ -16,7 +16,7 @@ pub struct DemoFile {
 	pub contents: String,
 	pub sizeof: usize,
 }
-
+// TODO文件大小
 impl DemoFile {
 	pub fn new(p: &str, buf: &str) -> DemoFile {
 		// 最终决定在new这里就先检查文件的有效性
